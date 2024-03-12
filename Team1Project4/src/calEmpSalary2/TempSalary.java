@@ -4,10 +4,8 @@ import java.util.Scanner;
 
 import member.TempMember;
 
-public class TempSalary {
-	private final static int BASIC_PAY = 1_000_000;
-	private final static int MINIMUM_WAGE = 9860;
-	private final static int DAY_WORKING_TIME = 8;
+public class TempSalary implements Salary {
+
 	TempMember[] tempMember;
 	int tryTpAdd = 0;
 
@@ -15,6 +13,7 @@ public class TempSalary {
 		tempMember = new TempMember[100];
 	}
 
+	@Override
 	public void input(Scanner sc) {
 		tempMember[tryTpAdd] = new TempMember();
 		System.out.print("사번을 입력해주세요.:");
@@ -28,18 +27,18 @@ public class TempSalary {
 		tryTpAdd++;
 	}
 
+	@Override
 	public void search(Scanner sc) {
 		System.out.print("사번을 입력해주세요(총 7자리):");
 		int inputId = sc.nextInt();
 		for (int i = 0; i < tryTpAdd; i++) {
 			if (inputId == tempMember[i].getId()) {
-				// TempSalary tempSalary = new TempSalary(tempMember[i]);
 				System.out.println("***********급여조회***********");
 				System.out.println("사번:" + tempMember[i].getId());
 				System.out.println("이름:" + tempMember[i].getName());
 				System.out.println("입행년도:" + tempMember[i].getJoinYear());
 				System.out.println("근무일수:" + tempMember[i].getWorkingDate());
-				System.out.print("기본급:" + getBasicPay() + "\t");
+				System.out.print("기본급:" + BASIC_PAY + "\t");
 				System.out.println("근무수당:" + getWorkingDatePay(i));
 				System.out.println("급여총계:" + getTotal(i));
 				System.out.println("**************************");
@@ -47,6 +46,7 @@ public class TempSalary {
 		}
 	}
 
+	@Override
 	public void modify(Scanner sc) {
 		System.out.print("사번을 입력해주세요(총 7자리):");
 		int inputId = sc.nextInt();
@@ -82,6 +82,7 @@ public class TempSalary {
 		}
 	}
 
+	@Override
 	public void print() {
 		for (int i = 0; i < tryTpAdd; i++) {
 			System.out.println("***********급여조회***********");
@@ -89,15 +90,11 @@ public class TempSalary {
 			System.out.println("이름:" + tempMember[i].getName());
 			System.out.println("입행년도:" + tempMember[i].getJoinYear());
 			System.out.println("근무일수:" + tempMember[i].getWorkingDate());
-			System.out.print("기본급:" + getBasicPay() + "\t");
+			System.out.print("기본급:" + BASIC_PAY + "\t");
 			System.out.println("근무수당:" + getWorkingDatePay(i));
 			System.out.println("급여총계:" + getTotal(i));
 			System.out.println("**************************");
 		}
-	}
-
-	public int getBasicPay() {
-		return BASIC_PAY;
 	}
 
 	public int getWorkingDatePay(int i) {
@@ -105,6 +102,6 @@ public class TempSalary {
 	}
 
 	public int getTotal(int i) {
-		return getBasicPay() + getWorkingDatePay(i);
+		return BASIC_PAY + getWorkingDatePay(i);
 	}
 }

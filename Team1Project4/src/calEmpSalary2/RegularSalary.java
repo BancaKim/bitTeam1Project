@@ -4,26 +4,18 @@ import java.util.Scanner;
 
 import member.RegularMember;
 
-public class RegularSalary {
+public class RegularSalary implements Salary {
 	RegularMember[] regularMember;
 	int tryRgAdd = 0;
-
-	private final int BASIC_PAY = 1_000_000;
 
 	public RegularSalary() {
 		this.regularMember = new RegularMember[100];
 	}
 
-//	public RegularSalary(RegularMember rm) {
-//		this.overTimeAllowance = rm.getOverTimeAllowance();
-//		this.lastGrade = rm.getLastGrade();
-//		this.cert = rm.getCert();
-//		this.jobLevel = rm.getJobLevel();
-//	}
-
+	@Override
 	public void input(Scanner sc) {
 		regularMember[tryRgAdd] = new RegularMember(); // 동적 바인딩
-		System.out.print("사번을 입력해주세요.:");
+		System.out.print("사번을 입력해주세요(총 7자리):");
 		regularMember[tryRgAdd].setId(sc.nextInt());
 		System.out.print("이름을 입력해주세요.:");
 		regularMember[tryRgAdd].setName(sc.next());
@@ -40,6 +32,7 @@ public class RegularSalary {
 		tryRgAdd++;
 	}
 
+	@Override
 	public void search(Scanner sc) {
 		System.out.print("사번을 입력해주세요(총 7자리):");
 		System.out.println(tryRgAdd);
@@ -54,11 +47,11 @@ public class RegularSalary {
 				System.out.println("성과등급:" + regularMember[i].getLastGrade());
 				System.out.println("자격증 유무:" + regularMember[i].getCert());
 				System.out.println("시간외 근무시간:" + regularMember[i].getOverTimeAllowance());
-				System.out.print("기본급:" + getBasicPay()+"\t");
-				System.out.print("직무급:" + getOverallPay(i)+"\t");
-				System.out.print("성과급:" + getIncentivePay(i)+"\t");
-				System.out.print("자격급:" + getCertPay(i)+"\t");
-				System.out.println("시간외 수당:" + getOverTimePay(i)+"\t");
+				System.out.print("기본급:" + BASIC_PAY + "\t");
+				System.out.print("직무급:" + getOverallPay(i) + "\t");
+				System.out.print("성과급:" + getIncentivePay(i) + "\t");
+				System.out.print("자격급:" + getCertPay(i) + "\t");
+				System.out.println("시간외 수당:" + getOverTimePay(i) + "\t");
 				System.out.println("급여총계:" + getTotal(i));
 				System.out.println("**************************");
 			} else {
@@ -67,6 +60,7 @@ public class RegularSalary {
 		}
 	}
 
+	@Override
 	public void modify(Scanner sc) {
 		System.out.print("사번을 입력해주세요(총 7자리):");
 		int inputId = sc.nextInt();
@@ -90,19 +84,19 @@ public class RegularSalary {
 						subQuest = sc.next();
 						break;
 					case 3:
-						System.out.print("직무등급을 입력하세요.:");
+						System.out.print("직무등급을 입력하세요.(L0/L1/L2/L3/L4):");
 						regularMember[i].setJobLevel(sc.next());
 						System.out.println("직무등급이 수정되었습니다. Y:추가수정 N: 메인이동:");
 						subQuest = sc.next();
 						break;
 					case 4:
-						System.out.print("성과등급을 입력하세요.:");
+						System.out.print("성과등급을 입력하세요.(C/B/A/S):");
 						regularMember[i].setLastGrade(sc.next());
 						System.out.println("성과등급이 수정되었습니다. Y:추가수정 N: 메인이동:");
 						subQuest = sc.next();
 						break;
 					case 5:
-						System.out.print("자격증 유무를 입력하세요.:");
+						System.out.print("자격증 유무를 입력하세요. 1.여 2.부:");
 						regularMember[i].setCert(sc.nextInt());
 						System.out.println("자격증 유무가 수정되었습니다. Y:추가수정 N: 메인이동:");
 						subQuest = sc.next();
@@ -119,6 +113,7 @@ public class RegularSalary {
 		}
 	}
 
+	@Override
 	public void print() {
 		for (int i = 0; i < tryRgAdd; i++) {
 			System.out.println("***********급여조회***********");
@@ -129,18 +124,14 @@ public class RegularSalary {
 			System.out.println("성과등급:" + regularMember[i].getLastGrade());
 			System.out.println("자격증 유무:" + regularMember[i].getCert());
 			System.out.println("시간외 근무시간:" + regularMember[i].getOverTimeAllowance());
-			System.out.print("기본급:" + getBasicPay()+"\t");
-			System.out.print("직무급:" + getOverallPay(i)+"\t");
-			System.out.print("성과급:" + getIncentivePay(i)+"\t");
-			System.out.print("자격급:" + getCertPay(i)+"\t");
+			System.out.print("기본급:" + BASIC_PAY + "\t");
+			System.out.print("직무급:" + getOverallPay(i) + "\t");
+			System.out.print("성과급:" + getIncentivePay(i) + "\t");
+			System.out.print("자격급:" + getCertPay(i) + "\t");
 			System.out.println("시간외 수당:" + getOverTimePay(i));
-			System.out.println("급여총계:" + getTotal(i)+"\t");
+			System.out.println("급여총계:" + getTotal(i) + "\t");
 			System.out.println("**************************");
 		}
-	}
-
-	public int getBasicPay() {
-		return BASIC_PAY;
 	}
 
 	public int getOverallPay(int i) {
@@ -156,7 +147,7 @@ public class RegularSalary {
 			return 1_000_000;
 		} else {
 			return 0;
-		}	
+		}
 	}
 
 	public int getIncentivePay(int i) {
@@ -182,10 +173,10 @@ public class RegularSalary {
 	}
 
 	public int getOverTimePay(int i) {
-		return regularMember[i].getOverTimeAllowance()*(10000);
+		return regularMember[i].getOverTimeAllowance() * (10000);
 	}
 
 	public int getTotal(int i) {
-		return getBasicPay() + getOverallPay(i) + getIncentivePay(i) + getCertPay(i) + getOverTimePay(i);
+		return BASIC_PAY + getOverallPay(i) + getIncentivePay(i) + getCertPay(i) + getOverTimePay(i);
 	}
 }

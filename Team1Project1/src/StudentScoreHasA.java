@@ -1,0 +1,93 @@
+// 성적 처리 클래스
+
+
+public class RegularMemberHasSalary {
+	//이름은 name 클래스 
+	//과목=> subject
+	//총점 평균 여기서 연산
+	
+	private int overTimeAllowance;
+	private String lastGrade;
+	private int cert;
+	private String jobLevel;
+	
+	private Member id;
+	
+	private Subject kor;
+	private Subject mat;
+	private Subject eng;
+	int total;
+	double avg;
+	
+public RegularMemberHasSalary() {
+	RegularMember rgMember = new RegularMember();
+	kor = new Subject();
+	mat = new Subject();
+	eng = new Subject();
+};
+
+public StudentScoreHasA(Name name, Subject kor, Subject eng, Subject mat) {
+	this.name = name;
+	this.kor = kor;
+	this.mat = mat;
+	this.eng = eng;
+}
+	
+	public String get() {
+		return this.name.getName();
+	}
+
+	public void setOverTimeAllowance(int overtime) {
+		this.name.setName(name);
+	}
+
+	public int getKor() {
+		return this.kor.getScore();
+	}
+
+	public void setKor(int kor) {
+		this.kor.setScore(kor);
+	}
+
+	public int getMat() {
+		return this.mat.getScore();
+	}
+
+	public void setMat(int mat) {
+		this.mat.setScore(mat);
+	}
+
+	public int getEng() {
+		return this.eng.getScore();
+	}
+
+	public void setEng(int eng) {
+		this.eng.setScore(eng);
+	}
+	
+	public int getTotal() {
+		return this.kor.getScore()+this.mat.getScore()+this.eng.getScore();
+	}
+	
+	public double getAvg() {
+		return ((double)this.kor.getScore()+this.mat.getScore()+this.eng.getScore())/3;
+	}
+
+	public static void main(String[] args) {
+		//이름 국어 영어 수학 총점 평균 
+		
+		StudentScoreHasA stu = new StudentScoreHasA();
+		stu.setName("Superman");
+		stu.setKor(90);
+		stu.setMat(100);
+		stu.setEng(70);
+		System.out.println(stu.getName());
+		System.out.println(stu.getKor());
+		System.out.println(stu.getMat());
+		System.out.println(stu.getEng());
+		System.out.println(stu.getTotal());
+		System.out.println(stu.getAvg());
+	}
+	
+	
+}
