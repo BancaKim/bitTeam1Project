@@ -1,5 +1,7 @@
 package calEmpSalary2;
 
+
+
 import java.util.Scanner;
 
 import member.TempMember;
