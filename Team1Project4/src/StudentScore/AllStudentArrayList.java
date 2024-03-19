@@ -3,16 +3,16 @@ package StudentScore;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class AllStudentVer2 {
+public class AllStudentArrayList {
 
 	private int index;
 	private ArrayList<StudentScoreHasA> stu;
 
-	public AllStudentVer2() {
-		this(100);
+	public AllStudentArrayList() {
+		stu = new ArrayList<StudentScoreHasA>();
 	}
 
-	public AllStudentVer2(int num) {
+	public AllStudentArrayList(int num) {
 		stu = new ArrayList<StudentScoreHasA>(num);
 	}
 
@@ -28,7 +28,7 @@ public class AllStudentVer2 {
 		/*
 		 * 1. 학생정보입력 2. 학생정보수정 3. 학생정보검색 4. 학생전체출력
 		 */
-		AllStudentVer2 stu = new AllStudentVer2();
+		AllStudentArrayList stu = new AllStudentArrayList();
 		Scanner sc = new Scanner(System.in);
 		do {
 			System.out.println("1. 학생정보입력");
@@ -81,12 +81,15 @@ public class AllStudentVer2 {
 					int n = sc.nextInt();
 					switch (n) {
 					case 1:
+						System.out.println("국어점수를 입력해주세요: ");
 						stu.get(i).setKor(sc.nextInt());
 						break;
 					case 2:
+						System.out.println("영어점수를 입력해주세요: ");
 						stu.get(i).setEng(sc.nextInt());
 						break;
 					case 3:
+						System.out.println("수학점수를 입력해주세요: ");
 						stu.get(i).setMat(sc.nextInt());
 						break;
 
@@ -103,7 +106,7 @@ public class AllStudentVer2 {
 
 	private void setSearch() {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("누구 찾나요? ");
+		System.out.print("찾으려는 학생의 이름을 검색해주세요: ");
 		String name = sc.next();
 
 		int i = 0;
@@ -155,6 +158,7 @@ public class AllStudentVer2 {
 		stu.getAvg();
 
 		this.stu.add(stu); // 연결
+		index++;
 
 	}
 
