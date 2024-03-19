@@ -2,6 +2,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class BaseBall1 {
+	
+	
+	
+	
 	public static void main(String[] args) {
 
 		ArrayList<Integer> answer = new ArrayList<Integer>(3);
@@ -25,7 +29,7 @@ public class BaseBall1 {
 		Scanner sc = new Scanner(System.in);
 
 		do {
-			System.out.println(answer);
+//			System.out.println(answer);
 			System.out.print("input three number : ");
 			String myAnssc = sc.next();
 
@@ -33,7 +37,7 @@ public class BaseBall1 {
 				myAns.add((int) myAnssc.charAt(i)-48);
 			}
 			
-			System.out.println(myAns);
+//			System.out.println(myAns);
 
 			for (int i = 0; i < 3; i++) {
 				if (answer.contains(myAns.get(i))) {
