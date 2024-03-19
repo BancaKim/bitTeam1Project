@@ -1,7 +1,7 @@
 
 import java.util.Arrays;
 
-public class Algorithm3 {
+public class Algorithm2_1 {
 	public static void main(String[] args) {
 
 		String[] answer = new String[4];
