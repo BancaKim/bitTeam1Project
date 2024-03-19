@@ -31,7 +31,8 @@ public class Ex4 {
 				counts[arr[i]]++;
 			}
 
-			for (int i = 0; i < counts.length;) {
+			int i = 0;
+			while (i < counts.length) {
 				if (counts[i] >= 3) {
 					triplete++;
 					counts[i] -= 3;
