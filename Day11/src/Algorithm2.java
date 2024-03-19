@@ -33,13 +33,17 @@ public class Algorithm2 {
 						list.set(0, list.get(3));
 						list.set(1, tmp);
 					}
+				}}
+				
+				String re = "";
+				for(int i = 0; i < list.size(); i++) {
+					re+=Integer.toString(list.get(i));
 				}
-				int result = list.get(0)*1000+list.get(1)*100+list.get(2)*10+list.get(3);
-				System.out.println(result);
+				
+				System.out.println("str: "+re);
+				re = "";
 				list.clear();
 			}
-			System.out.println();
 
 		}
 	}
-}
