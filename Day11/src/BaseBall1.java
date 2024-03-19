@@ -25,7 +25,7 @@ public class BaseBall1 {
 		Scanner sc = new Scanner(System.in);
 
 		do {
-//			System.out.println(answer);
+			System.out.println(answer);
 			System.out.print("input three number : ");
 			String myAnssc = sc.next();
 
@@ -33,7 +33,7 @@ public class BaseBall1 {
 				myAns.add((int) myAnssc.charAt(i)-48);
 			}
 			
-//			System.out.println(myAns);
+			System.out.println(myAns);
 
 			for (int i = 0; i < 3; i++) {
 				if (answer.contains(myAns.get(i))) {
@@ -54,6 +54,7 @@ public class BaseBall1 {
 				myAns.clear();
 				strike = 0;
 				ball = 0;
+				count++;
 			}
 		} while (strike != 3);
 
