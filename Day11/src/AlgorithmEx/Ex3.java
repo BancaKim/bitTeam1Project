@@ -38,12 +38,12 @@ public class Ex3 {
 	        System.out.println("count :" + count);
 	}
 	public static boolean isSorted(int num) {
-		String numStr = String.valueOf(num);
-		for(int i=0;i<numStr.length()-1;i++) {
-			if(numStr.charAt(i) < numStr.charAt(i+1)) {
-				return true;
+		String numStr = num+"";  //123 -> "123"
+		for(int i=0;i<numStr.length()-1;i++) {    //i=0    charAt(0)< charAt(1) true  &&
+			if(numStr.charAt(i) < numStr.charAt(i+1)) {  //i=1 charAt(1)<charAt(2) false
+				return false;							
 			};
 		}
-		return false;
+		return true;  
 	}
 }
